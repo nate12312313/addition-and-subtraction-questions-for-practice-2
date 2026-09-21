@@ -21,9 +21,9 @@
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
         }
         .card {
@@ -34,6 +34,8 @@
             text-align: center;
             cursor: pointer;
             transition: transform 0.2s;
+            text-decoration: none;
+            display: block;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -52,38 +54,34 @@
 
     <header>
         <h1>Calculus & Logic Activities</h1>
-        <p>Select an assignment below to load the simulation grid.</p>
+        <p>Select an assignment below to launch your workspace in a new tab.</p>
     </header>
 
     <div class="grid">
-        <!-- Cookie Clicker Card (Points to your local file) -->
-        <div class="card" onclick="launchGame('cookie-clicker.html')">
+        <!-- Pac-Man Link -->
+        <a class="card" href="https://google.com" target="_blank">
+            <h3>Logic Grid Alpha</h3>
+            <p>Classic maze navigation puzzle.</p>
+        </a>
+
+        <!-- Tetris Link -->
+        <a class="card" href="https://tetris.com" target="_blank">
+            <h3>Spatial Reasoning</h3>
+            <p>Block alignment challenge.</p>
+        </a>
+
+        <!-- Geometry Dash Link -->
+        <a class="card" href="https://geometrydash.io" target="_blank">
+            <h3>Rhythm & Timing</h3>
+            <p>Physics-based obstacle navigation.</p>
+        </a>
+
+        <!-- Cookie Clicker Link -->
+        <a class="card" href="https://dashnet.org" target="_blank">
             <h3>Resource Optimization</h3>
-            <p>Incremental progression and multi-tier production logic.</p>
-        </div>
-
-        <!-- Moto X3M Card (We will update this one next once you find the code!) -->
-        <div class="card" onclick="launchGame('https://github.io')">
-            <h3>Velocity & Angular Physics</h3>
-            <p>Vector calculations using momentum and center-of-mass constraints.</p>
-        </div>
+            <p>Incremental progression system.</p>
+        </a>
     </div>
-
-    <script>
-        function launchGame(url) {
-            var win = window.open();
-            win.document.body.style.margin = '0';
-            win.document.body.style.height = '100vh';
-            
-            var iframe = win.document.createElement('iframe');
-            iframe.style.border = 'none';
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.src = url;
-            
-            win.document.body.appendChild(iframe);
-        }
-    </script>
 
 </body>
 </html>
