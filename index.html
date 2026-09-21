@@ -56,13 +56,13 @@
     </header>
 
     <div class="grid">
-        <!-- Cookie Clicker Card -->
-        <div class="card" onclick="launchGame('https://github.io')">
+        <!-- Cookie Clicker Card (Points to your local file) -->
+        <div class="card" onclick="launchGame('cookie-clicker.html')">
             <h3>Resource Optimization</h3>
             <p>Incremental progression and multi-tier production logic.</p>
         </div>
 
-        <!-- Moto X3M Card -->
+        <!-- Moto X3M Card (We will update this one next once you find the code!) -->
         <div class="card" onclick="launchGame('https://github.io')">
             <h3>Velocity & Angular Physics</h3>
             <p>Vector calculations using momentum and center-of-mass constraints.</p>
@@ -71,7 +71,6 @@
 
     <script>
         function launchGame(url) {
-            // This creates a completely clean tab completely detached from your main domain history
             var win = window.open();
             win.document.body.style.margin = '0';
             win.document.body.style.height = '100vh';
