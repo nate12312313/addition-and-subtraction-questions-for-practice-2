@@ -79,64 +79,54 @@
 
     <header id="main-header">
         <h1>Calculus & Logic Activities</h1>
-        <p>Select an activity below to begin your session inside the terminal.</p>
+        <p>Select an assignment below to load the simulation grid.</p>
     </header>
 
-    <!-- Main Selection Menu -->
+    <!-- Menu Selection Grid -->
     <div class="grid" id="game-grid">
-        <!-- Cookie Clicker -->
-        <div class="card" onclick="loadGame('https://github.io', 'Resource Optimization')">
+        <div class="card" onclick="runPlayer('https://github.io', 'Resource Optimization')">
             <h3>Resource Optimization</h3>
             <p>Incremental progression and multi-tier production logic.</p>
         </div>
 
-        <!-- Moto X3M -->
-        <div class="card" onclick="loadGame('https://github.io', 'Velocity & Angular Physics')">
+        <div class="card" onclick="runPlayer('https://github.io', 'Velocity & Angular Physics')">
             <h3>Velocity & Angular Physics</h3>
             <p>Vector calculations using momentum and center-of-mass constraints.</p>
         </div>
 
-        <!-- Geometry Dash -->
-        <div class="card" onclick="loadGame('https://hwcdn.net', 'Rhythm, Frequency & Timing')">
+        <div class="card" onclick="runPlayer('https://hwcdn.net', 'Rhythm, Frequency & Timing')">
             <h3>Rhythm, Frequency & Timing</h3>
             <p>Spatial awareness via high-frequency rhythmic intervals.</p>
         </div>
 
-        <!-- Bubble/Babel Tower -->
-        <div class="card" onclick="loadGame('https://famobi.com', 'Structural Geometry & Stacking')">
+        <div class="card" onclick="runPlayer('https://famobi.com', 'Structural Geometry & Stacking')">
             <h3>Structural Geometry & Stacking</h3>
             <p>3D projection challenges assessing mass and foundational stability.</p>
         </div>
     </div>
 
-    <!-- Embedded Player View -->
+    <!-- Hidden Video Player Interface -->
     <div id="player-container">
-        <button class="back-btn" onclick="goBack()">← Return to Menu</button>
-        <h2 id="current-title" style="color: #2c3e50; margin-bottom: 15px;"></h2>
-        <iframe id="game-frame" src="" allowfullscreen></iframe>
+        <button class="back-btn" onclick="closePlayer()">← Return to Menu</button>
+        <h2 id="display-title" style="color: #2c3e50; margin-bottom: 15px;"></h2>
+        <iframe id="target-frame" src="" allowfullscreen></iframe>
     </div>
 
     <script>
-        function loadGame(url, title) {
-            // Hide the main grid and header
+        function runPlayer(targetUrl, displayTitle) {
             document.getElementById('game-grid').style.display = 'none';
             document.getElementById('main-header').style.display = 'none';
             
-            // Show the frame container
-            const container = document.getElementById('player-container');
-            container.style.display = 'block';
+            document.getElementById('display-title').innerText = displayTitle;
+            document.getElementById('target-frame').src = targetUrl;
             
-            // Inject the title and game URL into the frame
-            document.getElementById('current-title').innerText = title;
-            document.getElementById('game-frame').src = url;
+            document.getElementById('player-container').style.display = 'block';
         }
 
-        function goBack() {
-            // Clear the frame to stop game audio/loading
-            document.getElementById('game-frame').src = '';
-            
-            // Hide player and restore main grid
+        function closePlayer() {
+            document.getElementById('target-frame').src = '';
             document.getElementById('player-container').style.display = 'none';
+            
             document.getElementById('game-grid').style.display = 'grid';
             document.getElementById('main-header').style.display = 'block';
         }
@@ -145,6 +135,4 @@
 </body>
 </html>
 
-     
-     
-     
+       
