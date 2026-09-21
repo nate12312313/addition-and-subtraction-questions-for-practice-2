@@ -34,6 +34,8 @@
             text-align: center;
             cursor: pointer;
             transition: transform 0.2s;
+            text-decoration: none;
+            display: block;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -42,99 +44,60 @@
             margin-top: 0;
             color: #3498db;
         }
-        #player-container {
-            display: none;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        .back-btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .back-btn:hover {
-            background: #c0392b;
+        .card p {
+            color: #666;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1 id="page-title">Calculus & Logic Activities</h1>
-        <p id="page-sub">Select an activity to begin your session.</p>
+        <h1>Calculus & Logic Activities</h1>
+        <p>Select an assignment below to launch your workspace in a new tab.</p>
     </header>
 
-    <div class="grid" id="game-grid">
-        <div class="card" onclick="loadGame('https://google.com', 'Pac-Man')">
+    <div class="grid">
+        <!-- Cookie Clicker -->
+        <a class="card" href="https://dashnet.org" target="_blank">
+            <h3>Resource Optimization</h3>
+            <p>Incremental progression and multi-tier production logic.</p>
+        </a>
+
+        <!-- Moto X3M -->
+        <a class="card" href="https://html5games.com/Game/Moto-X3M/442157bb-0a48-4e9b-9fa6-e1503f16e8e3" target="_blank">
+            <h3>Velocity & Angular Physics</h3>
+            <p>Vector calculations using momentum and center-of-mass constraints.</p>
+        </a>
+
+        <!-- Geometry Dash -->
+        <a class="card" href="https://geometrydash.io" target="_blank">
+            <h3>Rhythm, Frequency & Timing</h3>
+            <p>Spatial awareness via high-frequency rhythmic intervals.</p>
+        </a>
+
+        <!-- Babel Tower -->
+        <a class="card" href="https://html5games.com/Game/Bubble-Tower-3D/1385d98a-b5f2-4339-bce7-b99a8dd2e8b0" target="_blank">
+            <h3>Structural Geometry & Stacking</h3>
+            <p>3D projection challenges assessing mass and foundational stability.</p>
+        </a>
+
+        <!-- Pac-Man (Bonus) -->
+        <a class="card" href="https://google.com" target="_blank">
             <h3>Logic Grid Alpha</h3>
-            <p>Classic maze navigation puzzle.</p>
-        </div>
-        <div class="card" onclick="loadGame('https://tetris.com', 'Stacking Simulation')">
-            <h3>Spatial Reasoning</h3>
-            <p>Block alignment challenge.</p>
-        </div>
+            <p>Algorithmic pathfinding and network traversal navigation matrix.</p>
+        </a>
+
+        <!-- Tetris (Bonus) -->
+        <a class="card" href="https://tetris.com" target="_blank">
+            <h3>Spatial Reasoning Matrix</h3>
+            <p>Polyomino alignment logic under rapid transformation parameters.</p>
+        </a>
     </div>
-
-    <div id="player-container">
-        <button class="back-btn" onclick="goBack()">← Return to Menu</button>
-        <h2 id="game-title"></h2>
-        <iframe id="game-frame" src=""></iframe>
-    </div>
-
-    <script>
-        function loadGame(url, title) {
-            document.getElementById('game-grid').style.display = 'none';
-            document.getElementById('page-title').style.display = 'none';
-            document.getElementById('page-sub').style.display = 'none';
-            
-            const container = document.getElementById('player-container');
-            container.style.display = 'block';
-            
-            document.getElementById('game-title').innerText = title;
-            document.getElementById('game-frame').src = url;
-        }
-
-        function goBack() {
-            document.getElementById('game-frame').src = '';
-            document.getElementById('player-container').style.display = 'none';
-            document.getElementById('game-grid').style.display = 'grid';
-            document.getElementById('page-title').style.display = 'block';
-            document.getElementById('page-sub').style.display = 'block';
-        }
-    </script>
 
 </body>
 </html>
-    <div class="grid" id="game-grid">
-        <div class="card" onclick="loadGame('https://google.com', 'Pac-Man')">
-            <h3>Logic Grid Alpha</h3>
-            <p>Classic maze navigation puzzle.</p>
-        </div>
-        <div class="card" onclick="loadGame('https://tetris.com', 'Stacking Simulation')">
-            <h3>Spatial Reasoning</h3>
-            <p>Block alignment challenge.</p>
-        </div>
-        <!-- Added Geometry Dash -->
-        <div class="card" onclick="loadGame('https://geometry-dash.co', 'Geometry Dash')">
-            <h3>Rhythm & Timing</h3>
-            <p>Physics-based obstacle navigation.</p>
-        </div>
-        <!-- Added Cookie Clicker -->
-        <div class="card" onclick="loadGame('https://dashnet.org', 'Cookie Clicker')">
-            <h3>Resource Optimization</h3>
-            <p>Incremental progression system.</p>
-        </div>
-    </div>
+
+     
+     
+     
