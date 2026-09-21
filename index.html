@@ -46,81 +46,43 @@
             color: #666;
             font-size: 14px;
         }
-        #player-container {
-            display: none;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            background-color: #000;
-        }
-        .back-btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .back-btn:hover {
-            background: #c0392b;
-        }
     </style>
 </head>
 <body>
 
-    <header id="main-header">
+    <header>
         <h1>Calculus & Logic Activities</h1>
         <p>Select an assignment below to load the simulation grid.</p>
     </header>
 
-    <!-- Clean Menu with Only Two Games -->
-    <div class="grid" id="game-grid">
-        <!-- Cookie Clicker -->
-        <div class="card" onclick="runPlayer('https://github.io', 'Resource Optimization')">
+    <div class="grid">
+        <!-- Cookie Clicker Card -->
+        <div class="card" onclick="launchGame('https://github.io')">
             <h3>Resource Optimization</h3>
             <p>Incremental progression and multi-tier production logic.</p>
         </div>
 
-        <!-- Moto X3M -->
-        <div class="card" onclick="runPlayer('https://github.io', 'Velocity & Angular Physics')">
+        <!-- Moto X3M Card -->
+        <div class="card" onclick="launchGame('https://github.io')">
             <h3>Velocity & Angular Physics</h3>
             <p>Vector calculations using momentum and center-of-mass constraints.</p>
         </div>
     </div>
 
-    <!-- Hidden Game Player Screen -->
-    <div id="player-container">
-        <button class="back-btn" onclick="closePlayer()">← Return to Menu</button>
-        <h2 id="display-title" style="color: #2c3e50; margin-bottom: 15px;"></h2>
-        <iframe id="target-frame" src="" allowfullscreen></iframe>
-    </div>
-
     <script>
-        function runPlayer(targetUrl, displayTitle) {
-            document.getElementById('game-grid').style.display = 'none';
-            document.getElementById('main-header').style.display = 'none';
+        function launchGame(url) {
+            // This creates a completely clean tab completely detached from your main domain history
+            var win = window.open();
+            win.document.body.style.margin = '0';
+            win.document.body.style.height = '100vh';
             
-            document.getElementById('display-title').innerText = displayTitle;
-            document.getElementById('target-frame').src = targetUrl;
+            var iframe = win.document.createElement('iframe');
+            iframe.style.border = 'none';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.src = url;
             
-            document.getElementById('player-container').style.display = 'block';
-        }
-
-        function closePlayer() {
-            document.getElementById('target-frame').src = '';
-            document.getElementById('player-container').style.display = 'none';
-            
-            document.getElementById('game-grid').style.display = 'grid';
-            document.getElementById('main-header').style.display = 'block';
+            win.document.body.appendChild(iframe);
         }
     </script>
 
