@@ -34,8 +34,6 @@
             text-align: center;
             cursor: pointer;
             transition: transform 0.2s;
-            text-decoration: none;
-            display: block;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -48,52 +46,101 @@
             color: #666;
             font-size: 14px;
         }
+        #player-container {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            background-color: #000;
+        }
+        .back-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .back-btn:hover {
+            background: #c0392b;
+        }
     </style>
 </head>
 <body>
 
-    <header>
+    <header id="main-header">
         <h1>Calculus & Logic Activities</h1>
-        <p>Select an assignment below to launch your workspace in a new tab.</p>
+        <p>Select an activity below to begin your session inside the terminal.</p>
     </header>
 
-    <div class="grid">
+    <!-- Main Selection Menu -->
+    <div class="grid" id="game-grid">
         <!-- Cookie Clicker -->
-        <a class="card" href="https://dashnet.org" target="_blank">
+        <div class="card" onclick="loadGame('https://github.io', 'Resource Optimization')">
             <h3>Resource Optimization</h3>
             <p>Incremental progression and multi-tier production logic.</p>
-        </a>
+        </div>
 
         <!-- Moto X3M -->
-        <a class="card" href="https://html5games.com/Game/Moto-X3M/442157bb-0a48-4e9b-9fa6-e1503f16e8e3" target="_blank">
+        <div class="card" onclick="loadGame('https://github.io', 'Velocity & Angular Physics')">
             <h3>Velocity & Angular Physics</h3>
             <p>Vector calculations using momentum and center-of-mass constraints.</p>
-        </a>
+        </div>
 
         <!-- Geometry Dash -->
-        <a class="card" href="https://geometrydash.io" target="_blank">
+        <div class="card" onclick="loadGame('https://hwcdn.net', 'Rhythm, Frequency & Timing')">
             <h3>Rhythm, Frequency & Timing</h3>
             <p>Spatial awareness via high-frequency rhythmic intervals.</p>
-        </a>
+        </div>
 
-        <!-- Babel Tower -->
-        <a class="card" href="https://html5games.com/Game/Bubble-Tower-3D/1385d98a-b5f2-4339-bce7-b99a8dd2e8b0" target="_blank">
+        <!-- Bubble/Babel Tower -->
+        <div class="card" onclick="loadGame('https://famobi.com', 'Structural Geometry & Stacking')">
             <h3>Structural Geometry & Stacking</h3>
             <p>3D projection challenges assessing mass and foundational stability.</p>
-        </a>
-
-        <!-- Pac-Man (Bonus) -->
-        <a class="card" href="https://google.com" target="_blank">
-            <h3>Logic Grid Alpha</h3>
-            <p>Algorithmic pathfinding and network traversal navigation matrix.</p>
-        </a>
-
-        <!-- Tetris (Bonus) -->
-        <a class="card" href="https://tetris.com" target="_blank">
-            <h3>Spatial Reasoning Matrix</h3>
-            <p>Polyomino alignment logic under rapid transformation parameters.</p>
-        </a>
+        </div>
     </div>
+
+    <!-- Embedded Player View -->
+    <div id="player-container">
+        <button class="back-btn" onclick="goBack()">← Return to Menu</button>
+        <h2 id="current-title" style="color: #2c3e50; margin-bottom: 15px;"></h2>
+        <iframe id="game-frame" src="" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function loadGame(url, title) {
+            // Hide the main grid and header
+            document.getElementById('game-grid').style.display = 'none';
+            document.getElementById('main-header').style.display = 'none';
+            
+            // Show the frame container
+            const container = document.getElementById('player-container');
+            container.style.display = 'block';
+            
+            // Inject the title and game URL into the frame
+            document.getElementById('current-title').innerText = title;
+            document.getElementById('game-frame').src = url;
+        }
+
+        function goBack() {
+            // Clear the frame to stop game audio/loading
+            document.getElementById('game-frame').src = '';
+            
+            // Hide player and restore main grid
+            document.getElementById('player-container').style.display = 'none';
+            document.getElementById('game-grid').style.display = 'grid';
+            document.getElementById('main-header').style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
