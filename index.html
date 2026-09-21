@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Practice - Student Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #3498db;
+        }
+        #player-container {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .back-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .back-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="page-title">Calculus & Logic Activities</h1>
+        <p id="page-sub">Select an activity to begin your session.</p>
+    </header>
+
+    <div class="grid" id="game-grid">
+        <div class="card" onclick="loadGame('https://google.com', 'Pac-Man')">
+            <h3>Logic Grid Alpha</h3>
+            <p>Classic maze navigation puzzle.</p>
+        </div>
+        <div class="card" onclick="loadGame('https://tetris.com', 'Stacking Simulation')">
+            <h3>Spatial Reasoning</h3>
+            <p>Block alignment challenge.</p>
+        </div>
+    </div>
+
+    <div id="player-container">
+        <button class="back-btn" onclick="goBack()">← Return to Menu</button>
+        <h2 id="game-title"></h2>
+        <iframe id="game-frame" src=""></iframe>
+    </div>
+
+    <script>
+        function loadGame(url, title) {
+            document.getElementById('game-grid').style.display = 'none';
+            document.getElementById('page-title').style.display = 'none';
+            document.getElementById('page-sub').style.display = 'none';
+            
+            const container = document.getElementById('player-container');
+            container.style.display = 'block';
+            
+            document.getElementById('game-title').innerText = title;
+            document.getElementById('game-frame').src = url;
+        }
+
+        function goBack() {
+            document.getElementById('game-frame').src = '';
+            document.getElementById('player-container').style.display = 'none';
+            document.getElementById('game-grid').style.display = 'grid';
+            document.getElementById('page-title').style.display = 'block';
+            document.getElementById('page-sub').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
